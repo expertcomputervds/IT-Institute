@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Computer Training Institute, Vidisha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap');
+
+        /* --- Global Styles --- */
+        :root {
+            --primary-color: #007BFF; /* Bright Blue */
+            --secondary-color: #0056b3; /* Darker Blue */
+            --accent-color: #28a745; /* Green for success/CTA */
+            --dark-color: #333;
+            --light-color: #f8f9fa; /* Lighter background */
+            --white-color: #fff;
+            --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.7rem; }
+        h4 { font-size: 1.3rem; }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 50px; /* Pill shape */
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--light-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary:hover {
+             background: #e9ecef;
+             color: var(--secondary-color);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        }
+        .btn-accent:hover {
+            background: #218838;
+            box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            background-color: rgba(166, 248, 34, 0.95);
+            box-shadow: var(--box-shadow);
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(252, 249, 61, 0.98);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar .logo {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding-left: 1rem; /* Align with container padding */
+        }
+        .navbar .logo span {
+            color: var(--accent-color);
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            padding-right: 2rem; /* Align with container padding */
+        }
+
+        .navbar ul li {
+            margin-left: 3rem;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .navbar ul li a:hover::after {
+            width: 100%;
+        }
+        .navbar ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Mobile Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding-right: 2rem;
+        }
+        .menu-toggle .bar {
+            width: 30px;
+            height: 3px;
+            background-color: var(--dark-color);
+            margin: 5px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--white-color);
+            position: relative;
+            overflow: hidden;
+            padding: 0 1rem;
+            margin: 140px 0 0 0;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeInScale 1.2s ease-out forwards;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 2.5rem 0;
+            font-weight: 300;
+        }
+        .hero .btn {
+            margin: 0 0.8rem;
+            font-size: 1.1rem;
+        }
+        .hero .btn-secondary {
+            background: var(--white-color);
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+        .hero .btn-secondary:hover {
+            background: #e0e0e0;
+            color: var(--secondary-color);
+        }
+
+
+        /* --- Sections General --- */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            color: var(--dark-color);
+        }
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 5px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+        
+        /* --- Stats Section --- */
+        #stats {
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- Courses Section --- */
+        #courses {
+            background: var(--light-color);
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: var(--white-color);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .course-card-content {
+            padding: 2rem;
+        }
+        .course-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        .course-card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* --- Why Us Section --- */
+        #why-us {
+            background: var(--white-color);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item .icon {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+        .feature-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        .feature-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* --- CTA Section --- */
+        #cta-section {
+            background: linear-gradient(rgba(0, 123, 255, 0.85), rgba(0, 123, 255, 0.85)), url('https://images.unsplash.com/photo-1582213782170-6eea8c551d7e?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--white-color);
+            text-align: center;
+            padding: 6rem 0;
+        }
+        #cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        #cta-section p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 4rem 0;
+            font-size: 0.95rem;
+        }
+        footer h2 {
+            color: var(--white-color);
+            margin-bottom: 2rem;
+        }
+        footer p {
+            margin-bottom: 0.8rem;
+        }
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* --- Animation on Scroll --- */
+        .hidden {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(70px);
+            transition: all 1.2s cubic-bezier(0.17, 0.85, 0.43, 0.99); /* Smooth ease-out */
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Styles --- */
+        @media(max-width: 992px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px; /* Adjust based on navbar height */
+                left: 0;
+                background-color: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                text-align: center;
+                box-shadow: var(--box-shadow);
+                padding: 1rem 0;
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar ul li {
+                margin: 1rem 0;
+            }
+            .navbar ul li a {
+                color: var(--dark-color);
+            }
+            .navbar ul li a::after {
+                background: var(--primary-color);
+            }
+            .menu-toggle {
+                display: flex;
+            }
+            .navbar .logo {
+                padding-left: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero .btn {
+                font-size: 1rem;
+                padding: 0.7rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .courses-grid, .features-grid, .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .course-card img {
+                height: 180px;
+            }
+            #cta-section h2 {
+                font-size: 2.2rem;
+            }
+            #cta-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media(max-width: 576px) {
+            .navbar .logo {
+                font-size: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .hero .btn {
+                display: block;
+                margin: 1rem auto;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .courses-grid, .features-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .course-card img {
+                height: 150px;
+            }
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .feature-item .icon {
+                margin-bottom: 0.8rem;
+            }
+            #cta-section h2 {
+                font-size: 1.8rem;
+            }
+            #cta-section p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">Expert Computer Training Institute</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#why-us">Why Us?</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>अपने करियर को दें नई उड़ान,एक्सपर्ट कंप्यूटर ट्रेनिंग इंस्टीट्यूट के साथ – विदिशा में सफलता का नया मुकाम!</h1>
+                <p>Vidisha ka sabse bharosemand computer institute, jahan milti hai 100% practical training aur job guidance.</p>
+                <a href="#courses" class="btn">Hamare Courses Dekhein <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-secondary">Abhi Sampark Karein <i class="fas fa-phone-alt"></i></a>
+            </div>
+        </section>
+
+        <section id="stats" class="section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item hidden">
+                        <h3><i class="fas fa-graduation-cap"></i> 500+</h3>
+                        <p>Successful Students</p>
+                    </div>
+                    <div class="stat-item hidden">
+                        <h3><i class="fas fa-medal"></i> 10+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    <div class="stat-item hidden">
+                        <h3><i class="fas fa-award"></i> 100%</h3>
+                        <p>Practical Training</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="courses" class="section">
+            <div class="container">
+                <h2 class="section-title">Aapke Career Ke Liye Sahi Course</h2>
+                <div class="courses-grid">
+                    <div class="course-card hidden">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="DCA PGDCA Course">
+                        <div class="course-card-content">
+                            <h3>DCA / PGDCA</h3>
+                            <p>Professional office work aur computer fundamentals ke liye best diploma course.</p>
+                        </div>
+                    </div>
+                    <div class="course-card hidden">
+                        <img src="tally.jpg" alt="Tally GST Course">
+                        <div class="course-card-content">
+                            <h3>Tally with GST</h3>
+                            <p>Accounting aur business management me career banane ke liye complete practical training.</p>
+                        </div>
+                    </div>
+                    <div class="course-card hidden">
+                        <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=2070&auto=format&fit=crop" alt="CPCT Preparation Course">
+                        <div class="course-card-content">
+                            <h3>CPCT Preparation</h3>
+                            <p>MP Government jobs ke liye zaroori CPCT exam ko aasani se clear karein.</p>
+                        </div>
+                    </div>
+                    <div class="course-card hidden">
+                        <img src="webdesign.jpg" alt="Web Designing Course">
+                        <div class="course-card-content">
+                            <h3>Web Designing & Development</h3>
+                            <p>Creative future ke liye website banana aur design karna seekhein.</p>
+                        </div>
+                    </div>
+                     <div class="course-card hidden">
+                        <img src="excel.jpg" alt="Advanced Excel Course">
+                        <div class="course-card-content">
+                            <h3>Advanced Excel</h3>
+                            <p>Data analysis, MIS reporting, aur complex formulas seekh kar corporate job ke liye taiyar hon.</p>
+                        </div>
+                    </div>
+                     <div class="course-card hidden">
+                        <img src="programming.jpg" alt="Programming Languages">
+                        <div class="course-card-content">
+                            <h3>Computer Languages (C, C++, Java, Python)</h3>
+                            <p>Software development me apna career banane ki shuruaat karein.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="section">
+            <div class="container">
+                <h2 class="section-title">Expert Computer Institute Hi Kyun?</h2>
+                <div class="features-grid">
+                    <div class="feature-item hidden">
+                        <div class="icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <div>
+                            <h4>Experienced Teachers</h4>
+                            <p>Hamare anubhavi aur friendly teachers har student par personal dhyan dete hain.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item hidden">
+                        <div class="icon"><i class="fas fa-laptop-code"></i></div>
+                        <div>
+                            <h4>100% Practical Training</h4>
+                            <p>Hum sirf theory nahi, balki real projects par practical training dete hain.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item hidden">
+                        <div class="icon"><i class="fas fa-trophy"></i></div>
+                        <div>
+                            <h4>Govt. Exam Preparation</h4>
+                            <p>CPCT, Typing, aur dusre competitive exams ke liye special taiyari karwate hain.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item hidden">
+                        <div class="icon"><i class="fas fa-briefcase"></i></div>
+                        <div>
+                            <h4>Job & Internship Guidance</h4>
+                            <p>Hum aapko course ke baad job dhoondhne aur internship me poori madad karte hain.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cta-section">
+            <div class="container hidden">
+                <h2>Ab Apne Sapno Ko Sach Karne Ka Samay Aa Gaya Hai!</h2>
+                <p>Expert Computer Training Institute me practical aur professional training ke saath aap apne future ko secure bana sakte hain. Aaj hi join kijiye aur ek step aage badhiye apne career ki taraf!</p>
+                <a href="#contact" class="btn btn-accent">Abhi Admission Lein <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <h2 class="section-title">Humse Sampark Karein</h2>
+            <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:8770410597">8770410597</a></p>
+            <p><i class="fas fa-envelope"></i> Email: <a href="mailto:districtvidisha@gmail.com">districtvidisha@gmail.com</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> Address: [Yahan Apna Poora Address Likhein], Vidisha, Madhya Pradesh</p>
+            <div style="margin-top: 2rem;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d116766.45269781845!2d77.96208493774845!3d23.518659556828555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397a6614132b4b41%3A0x6790a88090595305!2sVidisha%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700676451660!5m2!1sen!2sin" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p style="margin-top: 2rem;">&copy; 2025 Expert Computer Training Institute. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for dynamic features
+
+        // 1. Dynamic Navbar on Scroll
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 2. Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 3. Animation on Scroll (Fade-in effect)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    // Optional: remove class to re-animate on scroll up if desired
+                    // entry.target.classList.remove('show');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+        
+        // 4. Smooth Scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - (navbar.offsetHeight - 10), // Adjust for fixed header
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Close mobile menu on link click
+                if(navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
